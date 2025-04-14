@@ -1,0 +1,28 @@
+networks:
+  traefik:
+    external: true
+
+services:
+  hugo_nginx:
+    build:
+      context: .
+      args:
+        HUGO_VERSION: ${HUGO_VERSION}
+        HUGO_REPO: ${HUGO_REPO}
+        HUGO_OPTS: ${HUGO_OPTS}
+        DOMAIN: ${DOMAIN}
+        HUGO_SITENAME: ${HUGO_SITENAME}
+        TRAEFIK_NETWORK: ${TRAEFIK_NETWORK}
+    image: ${DOCKER_USER}/${HUGO_SITENAME}:hugo-nginx
+    restart: unless-stopped
+    networks:
+      traefik:
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=traefik"
+      - "traefik.http.routers.${HUGO_SITENAME:-hugo-nginx}.rule=Host(`${DOMAIN:-localhost}`)"
+      - "traefik.http.routers.${HUGO_SITENAME:-hugo-nginx}.entryPoints=https"
+      - "traefik.http.routers.${HUGO_SITENAME:-hugo-nginx}.tls=true"
+      - "traefik.http.routers.${HUGO_SITENAME:-hugo-nginx}.tls.certresolver=le"
+      - "traefik.http.routers.${HUGO_SITENAME:-hugo-nginx}.service=${HUGO_SITENAME:-hugo-nginx}-entrypoint"
+      - "traefik.http.services.${HUGO_SITENAME:-hugo-nginx}-entrypoint.loadbalancer.server.port=80"
