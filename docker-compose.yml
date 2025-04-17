@@ -5,7 +5,7 @@ networks:
 services:
   hugo_nginx:
     image: ${DOCKER_USER}/${HUGO_SITENAME}:hugo-nginx
-    pull_policy: ${PULL_POLICY:build}
+    pull_policy: ${PULL_POLICY:-build}
     build:
       context: .
       no_cache: ${NO_CACHE:-true}
