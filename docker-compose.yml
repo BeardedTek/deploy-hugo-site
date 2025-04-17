@@ -6,6 +6,7 @@ services:
   hugo_nginx:
     build:
       context: .
+      no_cache: true
       args:
         HUGO_VERSION: ${HUGO_VERSION}
         HUGO_REPO: ${HUGO_REPO}
