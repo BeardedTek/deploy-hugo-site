@@ -4,17 +4,16 @@ networks:
 
 services:
   hugo_nginx:
+    image: ${DOCKER_USER}/${HUGO_SITENAME}:hugo-nginx
+    pull_policy: ${PULL_POLICY:build}
     build:
       context: .
-      no_cache: true
+      no_cache: ${NO_CACHE:-true}
       args:
         HUGO_VERSION: ${HUGO_VERSION}
         HUGO_REPO: ${HUGO_REPO}
         HUGO_OPTS: ${HUGO_OPTS}
         DOMAIN: ${DOMAIN}
-        HUGO_SITENAME: ${HUGO_SITENAME}
-        TRAEFIK_NETWORK: ${TRAEFIK_NETWORK}
-    image: ${DOCKER_USER}/${HUGO_SITENAME}:hugo-nginx
     restart: unless-stopped
     networks:
       traefik:

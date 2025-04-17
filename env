@@ -4,4 +4,5 @@ HUGO_OPTS="--minify --enableGitInfo"
 DOMAIN=site.example.com
 PROTOCOL=https
 HUGO_SITENAME=site-example-com
-DOCKER_USER=johndoe
+PULL_POLICY=build
+NO_CACHE=true
