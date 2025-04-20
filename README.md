@@ -22,7 +22,6 @@ HUGO_SITENAME=site-example-com
 DOCKER_USER=beardedtek
 PULL_POLICY=build
 NO_CACHE=true
-PLAUSIBLE_HOST=plausible.io
 ```
 
 - HUGO_VERSION: Hugo Version (leave blank to use latest)
@@ -35,12 +34,6 @@ PLAUSIBLE_HOST=plausible.io
   - ${DOCKER_USER}/${HUGO_SITENAME}:hugo-nginx
 - PULL_POLICY: Set this to 'build' so that each time you bring the project up it builds the container
 - NO_CACHE: Set this to true so that it actually pulls the repo down and builds it each time
-- PLAUSIBLE_HOST: Set this if you use plausible for site tracking.
-  - This variable modifies `plausible-proxy.conf` at build time
-  - This is a free, privacy first Google Analytics alternative.  I highly recommend it.
-  - You can even self host the free community edition.
-    - https://plausible.io/docs/proxy/guides/nginx
-    - https://github.com/plausible/community-edition
 
 ## Adjust docker-compose as needed
 

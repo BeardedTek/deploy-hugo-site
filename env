@@ -7,4 +7,3 @@ HUGO_SITENAME=site-example-com
 DOCKER_USER=beardedtek
 PULL_POLICY=build
 NO_CACHE=true
-PLAUSIBLE_HOST=plausible.io

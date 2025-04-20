@@ -14,6 +14,7 @@ services:
         HUGO_VERSION: ${HUGO_VERSION}
         HUGO_REPO: ${HUGO_REPO}
         HUGO_OPTS: ${HUGO_OPTS}
+        PROTOCOL: ${PROTOCOL}
         DOMAIN: ${DOMAIN}
     restart: unless-stopped
     networks:
